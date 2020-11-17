@@ -1,28 +1,26 @@
 import React from "react";
 import "./Button.css";
 
-export default class Button extends React.Component {
-  handleClick = () => {
-    this.props.clickHandler(this.props.name);
+export default function Button(props) {
+  const handleClick = () => {
+    props.clickHandler(props.name);
   };
 
-  render() {
-    const className = [
-      "component-button",
-      this.props.name === "÷" ||
-      this.props.name === "x" ||
-      this.props.name === "-" ||
-      this.props.name === "+" ||
-      this.props.name === "="
-        ? "orange"
-        : "",
-      this.props.name === "0" ? "wide" : "",
-    ];
+  const className = [
+    "component-button",
+    props.name === "÷" ||
+    props.name === "x" ||
+    props.name === "-" ||
+    props.name === "+" ||
+    props.name === "="
+      ? "orange"
+      : "",
+    props.name === "0" ? "wide" : "",
+  ];
 
-    return (
-      <div className={className.join(" ").trim()}>
-        <button onClick={this.handleClick}>{this.props.name}</button>
-      </div>
-    );
-  }
+  return (
+    <div className={className.join(" ").trim()}>
+      <button onClick={handleClick}>{props.name}</button>
+    </div>
+  );
 }
